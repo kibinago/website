@@ -2,6 +2,7 @@
 import s from "../../styles/page/about.module.css";
 
 import DynamicPicture from "../../components/common/DynamicPicture.astro";
+import Link from "../../components/common/Link.astro";
 import { langParams } from "../../i18n/ui";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import BaseSite from "../../layouts/BaseSite.astro";
@@ -22,7 +23,7 @@ const t = useTranslations(getLangFromUrl(Astro.url));
     />
     <h1 class={s.title}>Yuto Hosaka</h1>
     <div class={s.links}>
-      <a href="/resume" target="_blank"> Publications</a>
+      <Link href="/resume">Publications</Link>
       <a
         href="https://scholar.google.co.jp/citations?user=i484Rs4AAAAJ&hl=en"
         target="_blank"
