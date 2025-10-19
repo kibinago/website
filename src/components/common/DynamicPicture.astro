@@ -1,0 +1,30 @@
+---
+import { type HTMLAttributes } from "astro/types";
+import { Picture } from "astro:assets";
+import { ALL_IMAGES } from "../../utils/constants";
+
+type Props = {
+  src: string;
+  alt: string;
+} & HTMLAttributes<"picture">;
+
+const { src, alt, ...rest } = Astro.props;
+const isExternal = src.startsWith("http");
+
+if (!isExternal && !ALL_IMAGES[src]) {
+  throw new Error(
+    `"${src}" does not exist in glob: "src/assets/**/*.{jpeg,jpg,png,gif}"`,
+  );
+}
+---
+
+{
+  isExternal ? <img {src} {alt}> : (
+    <Picture
+      src={ALL_IMAGES[src]()}
+      formats={["webp"]}
+      {alt}
+      {...rest}
+    />
+  )
+}

@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import ContentBox from "../../components/common/ContentBox.astro";
+import { langParams } from "../../i18n/ui";
+import BaseSite from "../../layouts/BaseSite.astro";
+import s from "../../styles/page/index.module.css";
+
+export async function getStaticPaths() {
+  return langParams;
+}
+
+const { lang } = Astro.params;
+
+const links = (
+  await getCollection("link", (entry) => entry.id.startsWith(lang))
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseSite>
+  <h1 class={s.title}>Links</h1>
+  <div class={s.contentWrap}>
+    {links
+      .sort(
+        (a, b) =>
+          a.data.order - b.data.order
+      )
+      .map((content) => <ContentBox {content} />)}
+  </div>
+</BaseSite>

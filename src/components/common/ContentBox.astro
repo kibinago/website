@@ -1,0 +1,34 @@
+---
+import s from "../../styles/components/common/ContentBox.module.css";
+
+import { type CollectionEntry, render } from "astro:content";
+import FormattedDate from "../FormattedDate.astro";
+import DynamicPicture from "./DynamicPicture.astro";
+
+type Props = {
+  content: CollectionEntry<"research" | "resume" | "link" | "blog">;
+};
+
+const { content } = Astro.props;
+const { Content } = await render(content);
+---
+
+<article class={s.content}>
+  <hgroup class={s.hgroup}>
+    <span class={s.titleWrap}>
+      <span class={s.date}>
+        {content.data.updateDate && (
+          <span>
+            Last Update: <FormattedDate date={content.data.updateDate} />
+          </span>
+        )}
+      </span>
+      <h1 class={s.title}>{content.data.title}</h1>
+      <p>{content.data.description}</p>
+    </span>
+  </hgroup>
+  <hr class={s.hr} />
+  <div class={s.body}>
+    <Content components={{ img: DynamicPicture }} />
+  </div>
+</article>

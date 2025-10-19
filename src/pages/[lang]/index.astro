@@ -1,0 +1,47 @@
+---
+import s from "../../styles/page/about.module.css";
+
+import DynamicPicture from "../../components/common/DynamicPicture.astro";
+import { langParams } from "../../i18n/ui";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import BaseSite from "../../layouts/BaseSite.astro";
+
+export async function getStaticPaths() {
+  return langParams;
+}
+
+const t = useTranslations(getLangFromUrl(Astro.url));
+---
+
+<BaseSite>
+  <div class={s.about}>
+    <DynamicPicture
+      src="/src/assets/images/about/yutohosaka.jpg"
+      alt="Yuto Hosaka"
+      class={s.image}
+    />
+    <h1 class={s.title}>Yuto Hosaka</h1>
+    <div class={s.links}>
+      <a
+        href="https://thirsty-kowalevski-eb7910.netlify.app/resume/"
+        target="_blank"
+      >
+        Publications
+      </a>
+      <a
+        href="https://scholar.google.co.jp/citations?user=i484Rs4AAAAJ&hl=en"
+        target="_blank"
+      >
+        Google Scholar
+      </a>
+      <a href="https://arxiv.org/a/0000-0002-6202-4206.html" target="_blank">
+        arXiv
+      </a>
+      <a href="https://orcid.org/0000-0002-6202-4206" target="_blank"> ORCiD</a>
+      <a href="https://researchmap.jp/YutoHosaka" target="_blank">
+        researchmap
+      </a>
+    </div>
+    <p class={s.description}>{t("about.mainText")}</p>
+  </div>
+</BaseSite>

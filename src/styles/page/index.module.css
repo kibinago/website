@@ -1,0 +1,15 @@
+.title {
+  font-weight: 400;
+  color: var(--on-surface-variant);
+  margin-bottom: var(--size-4xl);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.contentWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--size-xl);
+  margin-bottom: var(--size-3xl);
+}
