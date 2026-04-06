@@ -21,10 +21,10 @@ type Translation = Record<TranslationKey, string>;
 export const translations: Record<Language, Translation> = {
   en: {
     "about.mainText":
-      "Department of Living Matter Physics, Max Planck Institute for Dynamics and Self-Organization (MPIDS-LMP). My interests are soft active matter and low Reynolds number hydrodynamics, especially chiral active fluids.",
+      "Program-Specific Assistant Professor, Department of Mathematics, Kyoto University. My interests are soft active matter and low Reynolds number hydrodynamics, especially chiral active fluids.",
   },
   ja: {
     "about.mainText":
-      "Department of Living Matter Physics, Max Planck Institute for Dynamics and Self-Organization (MPIDS-LMP). My interests are soft active matter and low Reynolds number hydrodynamics, especially chiral active fluids.",
+      "京都大学 理学研究科 数学教室　特定助教", ソフト・アクティブマター、低レイノルズ数流理力学、生物物理に興味があります",
   },
 } as const;
