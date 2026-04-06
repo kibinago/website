@@ -8,7 +8,7 @@ import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import BaseSite from "../../layouts/BaseSite.astro";
 
 export async function getStaticPaths() {
-  return langParams;
+  return [...langParams];
 }
 
 const t = useTranslations(getLangFromUrl(Astro.url));

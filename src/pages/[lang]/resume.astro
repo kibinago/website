@@ -6,7 +6,7 @@ import BaseSite from "../../layouts/BaseSite.astro";
 import s from "../../styles/page/index.module.css";
 
 export async function getStaticPaths() {
-  return langParams;
+  return [...langParams];
 }
 
 const { lang } = Astro.params;
@@ -19,11 +19,10 @@ const researches = (
 <BaseSite>
   <h1 class={s.title}>Resume</h1>
   <div class={s.contentWrap}>
-    {researches
-      .sort(
-        (a, b) => 
-          a.data.order - b.data.order
-      )
-      .map((content) => <ContentBox {content} />)}
+    {
+      researches
+        .sort((a, b) => a.data.order - b.data.order)
+        .map((content) => <ContentBox {content} />)
+    }
   </div>
 </BaseSite>
