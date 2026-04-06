@@ -25,6 +25,6 @@ export const translations: Record<Language, Translation> = {
   },
   ja: {
     "about.mainText":
-      "京都大学 理学研究科 数学教室　特定助教", ソフト・アクティブマター、低レイノルズ数流理力学、生物物理に興味があります",
+      "京都大学 理学研究科 数学教室　特定助教, ソフト・アクティブマター、低レイノルズ数流理力学、生物物理に興味があります",
   },
 } as const;
